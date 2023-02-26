@@ -50,24 +50,24 @@ while not gameover:
     posY_blue2 += speedY_blue # Teise auto liikumise tsükkel
     
     # Autode tagasi liikumine 
-    if posY_blue >= 480:
-        posY_blue = 0
+    if posY_blue >= 480: # Kui auto positsiooni väärtuseks on arv suurem kui ekraani max suurus(ekraanist väljas)
+        posY_blue = 0 # Paigutab auto tagasi ülemisse ekraani äärde
         score = score + 1 # Lisab iga ekraanilt väljumise tagant +1 skoori
         
-    if posY_red <= 0:
-        posY_red = 400
+    if posY_red <= 0: # Kui punase auto positsiooni väärtuseks on arv väiksem kui ekraani min suurus(ekraanist väljas)
+        posY_red = 480 # Paigutab punase auto tagasi ekraani alumisse äärde
         
-    if posY_blue2 >= 480:
-        posY_blue2 = 0
+    if posY_blue2 >= 480: # Kui auto positsiooni väärtuseks on arv suurem kui ekraani max suurus(ekraanist väljas)
+        posY_blue2 = 0 # Paigutab auto tagasi ekraani ülemisse äärde
         score = score + 1 # Lisab iga ekraanilt väljumise tagant +1 skoori
         
     # Skoori näitamine ekraanil
     score_render = score_font.render(str(score), 1, (54, 81, 225,))
     score_pos = [10, 10]
+    screen.blit(score_render, score_pos)
 
     # Graafika kuvamine ekraanil
     pygame.display.flip()
     screen.blit(bg, (0,0))
-    screen.blit(score_render, score_pos)
  
 pygame.quit()
